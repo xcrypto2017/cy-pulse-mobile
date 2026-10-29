@@ -34,7 +34,14 @@ jobs:
           <button onclick="location.replace('https://pulse.cydesignstudioph.com/')">Try again</button></div></body></html>
           EOF
       - run: npm install
-      - run: npm run add:android
+      - run: npx cap add android
+      - name: Add location and camera permissions
+        run: |
+          sed -i 's#</manifest>#    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />\n    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />\n    <uses-permission android:name="android.permission.CAMERA" />\n</manifest>#' android/app/src/main/AndroidManifest.xml
+      - name: App icons (skipped if resources folder is missing)
+        continue-on-error: true
+        run: npx capacitor-assets generate --android --iconBackgroundColor '#111111' --splashBackgroundColor '#111111'
+      - run: npx cap sync android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
