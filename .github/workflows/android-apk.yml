@@ -12,7 +12,27 @@ jobs:
         with: { node-version: 22 }
       - uses: actions/setup-java@v4
         with: { distribution: temurin, java-version: 21 }
-      - uses: android-actions/setup-android@v3
+      - name: Create web folder
+        run: |
+          mkdir -p www
+          cat > www/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en"><head><meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+          <title>C+Y Pulse</title>
+          <style>html,body{margin:0;height:100%;background:#111;color:#fff;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center}</style>
+          </head><body><p>Loading C+Y Pulse...</p>
+          <script>location.replace('https://pulse.cydesignstudioph.com/');</script></body></html>
+          EOF
+          cat > www/offline.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en"><head><meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>Offline</title>
+          <style>html,body{margin:0;height:100%;background:#111;color:#fff;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}button{margin-top:16px;background:#fff;color:#111;border:0;border-radius:10px;padding:12px 26px;font-size:16px;font-weight:600}</style>
+          </head><body><div><h1>No connection</h1><p>C+Y Pulse needs internet. Check your Wi-Fi or mobile data.</p>
+          <button onclick="location.replace('https://pulse.cydesignstudioph.com/')">Try again</button></div></body></html>
+          EOF
       - run: npm install
       - run: npm run add:android
       - run: cd android && chmod +x gradlew && ./gradlew assembleDebug
