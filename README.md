@@ -29,3 +29,12 @@ Without a Mac you can use a cloud Mac service such as Codemagic or a GitHub `mac
   for staff-only use, TestFlight or Apple Business/Custom Apps distribution is the safer route.
 - Change the app id (`com.cydesignstudio.pulse`) in `capacitor.config.json` before the first build if you want another one.
 - Icons come from `resources/icon.png` (1024px) and `resources/splash.png`; replace them and re-run `npm run assets`.
+
+## Android layout fix (status bar / keyboard)
+`scripts/patch-native.mjs` also writes a custom `MainActivity.java` that pads the page by the system-bar and
+keyboard insets, so the header no longer slides under the clock/status icons on Android 15+ and inputs stay
+above the keyboard. It runs automatically with `npm run add:android` and `npm run sync`.
+
+`scripts/mobile-fit.js` is copied into the Android app and runs after every page load. It stretches the login form to
+full width on phones and docks the floating "Designed and Developed by" pill at the bottom. The proper long-term fix is
+in the website's own CSS; once that is done you can delete this script.
