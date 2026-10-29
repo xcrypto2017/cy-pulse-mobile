@@ -1,0 +1,25 @@
+{
+  "name": "cy-pulse-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Android and iOS app for C+Y Pulse (wraps https://pulse.cydesignstudioph.com)",
+  "scripts": {
+    "assets": "capacitor-assets generate --iconBackgroundColor '#111111' --splashBackgroundColor '#111111'",
+    "add:android": "cap add android && node scripts/patch-native.mjs && npm run assets && cap sync android",
+    "add:ios": "cap add ios && node scripts/patch-native.mjs && npm run assets && cap sync ios",
+    "sync": "cap sync && node scripts/patch-native.mjs",
+    "open:android": "cap open android",
+    "open:ios": "cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.0",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/ios": "^7.4.0",
+    "@capacitor/splash-screen": "^7.0.0",
+    "@capacitor/status-bar": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.4.0"
+  }
+}
