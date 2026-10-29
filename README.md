@@ -38,3 +38,8 @@ above the keyboard. It runs automatically with `npm run add:android` and `npm ru
 `scripts/mobile-fit.js` is copied into the Android app and runs after every page load. It stretches the login form to
 full width on phones and docks the floating "Designed and Developed by" pill at the bottom. The proper long-term fix is
 in the website's own CSS; once that is done you can delete this script.
+
+## If the new APK doesn't seem to change anything
+GitHub builds a debug APK signed with a different key each run, so Android may refuse to install it over the old
+one ("App not installed"). Uninstall the old C+Y Pulse first, then install the new one. Check Settings → Apps →
+C+Y Pulse: the version should read **1.1**.

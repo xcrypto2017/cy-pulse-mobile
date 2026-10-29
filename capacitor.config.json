@@ -5,14 +5,30 @@
   "server": {
     "url": "https://pulse.cydesignstudioph.com/",
     "cleartext": false,
-    "allowNavigation": ["pulse.cydesignstudioph.com", "*.cydesignstudioph.com", "fonts.googleapis.com", "fonts.gstatic.com"],
-    "errorPath": "offline.html"
+    "allowNavigation": [
+      "pulse.cydesignstudioph.com",
+      "*.cydesignstudioph.com",
+      "fonts.googleapis.com",
+      "fonts.gstatic.com"
+    ]
   },
   "backgroundColor": "#111111",
-  "android": { "allowMixedContent": false },
-  "ios": { "contentInset": "never", "backgroundColor": "#111111" },
+  "android": {
+    "allowMixedContent": false
+  },
+  "ios": {
+    "contentInset": "never",
+    "backgroundColor": "#111111"
+  },
   "plugins": {
-    "SplashScreen": { "launchShowDuration": 1200, "backgroundColor": "#111111", "showSpinner": false },
-    "StatusBar": { "style": "DARK", "backgroundColor": "#111111" }
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "backgroundColor": "#111111",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#111111"
+    }
   }
 }
