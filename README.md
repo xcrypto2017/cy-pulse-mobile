@@ -35,9 +35,6 @@ Without a Mac you can use a cloud Mac service such as Codemagic or a GitHub `mac
 keyboard insets, so the header no longer slides under the clock/status icons on Android 15+ and inputs stay
 above the keyboard. It runs automatically with `npm run add:android` and `npm run sync`.
 
-`scripts/mobile-fit.js` is copied into the Android app and runs after every page load. It stretches the login form to
-full width on phones and docks the floating "Designed and Developed by" pill at the bottom. The proper long-term fix is
-in the website's own CSS; once that is done you can delete this script.
 
 ## If the new APK doesn't seem to change anything
 GitHub builds a debug APK signed with a different key each run, so Android may refuse to install it over the old
