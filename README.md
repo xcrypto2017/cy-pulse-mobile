@@ -30,6 +30,14 @@ Without a Mac you can use a cloud Mac service such as Codemagic or a GitHub `mac
 - Change the app id (`com.cydesignstudio.pulse`) in `capacitor.config.json` before the first build if you want another one.
 - Icons come from `resources/icon.png` (1024px) and `resources/splash.png`; replace them and re-run `npm run assets`.
 
+## Fingerprint sign-in (v1.2)
+The app uses the phone's fingerprint / screen lock (`@capgo/capacitor-native-biometric`). After a normal password sign-in the
+app offers "Use fingerprint to sign in?". The password is then kept in the phone's secure storage and released only after a
+fingerprint check; the login screen shows **Sign in with fingerprint**. Turn it off any time in My Profile. If the password is
+changed, the saved one is cleared automatically and the user signs in with the password once to set it up again.
+This needs the matching website files (`assets/js/app-biometric.js`, updated `login.php`, `footer.php`, `profile.php`) uploaded.
+Rebuild the APK and uninstall the old app first (see below).
+
 ## Android layout fix (status bar / keyboard)
 `scripts/patch-native.mjs` also writes a custom `MainActivity.java` that pads the page by the system-bar and
 keyboard insets, so the header no longer slides under the clock/status icons on Android 15+ and inputs stay
